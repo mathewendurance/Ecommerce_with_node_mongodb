@@ -2,6 +2,7 @@ const {Router} = require('express')
 const UserController = require('../controller/UserController')
 const SessionController = require('../controller/Login')
 const ProductController = require('../controller/ProductController')
+const CartController = require('../controller/CartController')
 const routes = Router()
  
 routes.get('/',(req, res)=>{
@@ -21,9 +22,9 @@ routes.delete('/products/:user_id/:product_id', ProductController.deleteProduct)
 routes.get('/products', ProductController.getProduct)
 routes.get('/products/:product_id', ProductController.getProductById)
 
-routes.post('/cart/:user_id')
-routes.get('/cart/:user_id')
-routes.get('/cart/:cart_id')
+routes.post('/carts/:user_id', CartController.createCart)
+routes.get('/carts/:user_id', CartController.getUserCarts)
+routes.get('/carts/:cart_id', CartController.getCart)
 
 
 module.exports = routes
