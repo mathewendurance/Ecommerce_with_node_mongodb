@@ -6,27 +6,33 @@ async createCart(req,res){
   const {user_id} = req.params
   try{
     const createdCart =await Cart.create({...bodyData,username: user_id})
-    return res.status(200).send(createdCart)
-  }catch(err){
+    await createdCart.populate( 'products' )
+  return res.status(200).send(createdCart)
+  }
+  catch(err){
     return res.status(400).json(err)
   }
 },
 
 async getUserCarts(req,res){
+  const {user_id} = req.params 
     try{
-
-  }catch(err){
+      const userCarts = await Cart.find({username: user_id}).populate('products').populate('username')
+      return res.status(200).json(userCarts)
+ }catch(err){
     return res.status(400).json(err)
   }
 },
 
 async getCart(req,res){
+    const {cart_id} = req.params
     try{
-
+      const cart = await Cart.findById(cart_id).populate('products')
+      return res.status(200).json(cart)
   }catch(err){
     return res.status(400).json(err)
   }
 }
 }
 
-module.exports = CartController;
+module.exports = CartController; 
