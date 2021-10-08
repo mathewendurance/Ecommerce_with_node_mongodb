@@ -1,4 +1,5 @@
 const {Router} = require('express')
+const Joi = require('joi')
 const UserController = require('../controller/UserController')
 const SessionController = require('../controller/Login')
 const ProductController = require('../controller/ProductController')
