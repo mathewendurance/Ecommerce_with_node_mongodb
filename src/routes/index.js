@@ -1,7 +1,7 @@
 const {Router} = require('express')
 const Joi = require('joi')
 const UserController = require('../controller/UserController')
-const SessionController = require('../controller/Login')
+const LoginController = require('../controller/Login')
 const ProductController = require('../controller/ProductController')
 const CartController = require('../controller/CartController')
 const routes = Router()
@@ -10,11 +10,12 @@ routes.get('/',(req, res)=>{
     res.send('hellow')
 })
 routes.post('/users', UserController.createUser)
+//routes.post('/users/login', UserController.loginUser)
 routes.get('/users', UserController.getUsers)
 routes.get('/users/:user_id', UserController.getUserById)
 routes.delete('/users/:user_id',UserController.deleteUserById)
 
-routes.post('/session', SessionController.createSession)
+routes.post('/login', LoginController.loginUser)
 
 routes.post('/products/:user_id',ProductController.createProduct)
 routes.get('/:user_id/products', ProductController.getUserProduct)
