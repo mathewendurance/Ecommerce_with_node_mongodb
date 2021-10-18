@@ -1,8 +1,9 @@
 const User = require('../../model/User')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const cryptoJs = require('crypto-js')
 var _ = require('lodash');
 const Joi = require('joi')
-
+   
 const UserController = {
   async createUser(req,res){
     try{
@@ -23,7 +24,7 @@ const UserController = {
 
     }
   },
-  
+
   async getUsers(req, res){
     try{
       const users = await User.find().select('-password')
@@ -62,4 +63,5 @@ function validate(user) {
   };
   return Joi.validate(user, schema)
 }
+
 module.exports = UserController

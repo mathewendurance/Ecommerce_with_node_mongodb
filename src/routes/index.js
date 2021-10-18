@@ -10,7 +10,6 @@ routes.get('/',(req, res)=>{
     res.send('hellow')
 })
 routes.post('/users', UserController.createUser)
-//routes.post('/users/login', UserController.loginUser)
 routes.get('/users', UserController.getUsers)
 routes.get('/users/:user_id', UserController.getUserById)
 routes.delete('/users/:user_id',UserController.deleteUserById)
@@ -25,9 +24,10 @@ routes.delete('/products/:user_id/:product_id', ProductController.deleteProduct)
 routes.get('/products', ProductController.getProduct)
 routes.get('/products/:product_id', ProductController.getProductById)
 
-routes.post('/carts/:user_id', CartController.createCart)
-routes.get('/carts/:user_id', CartController.getUserCarts)
+routes.post('/carts/:user_id', CartController.AddToCart)
+routes.get('/:user_id/:cart_id', CartController.getUserCarts)
 routes.get('/carts/:cart_id', CartController.getCart)
+
 
 
 module.exports = routes
