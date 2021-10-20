@@ -1,7 +1,6 @@
 const {Router} = require('express')
 const Joi = require('joi')
 const auth = require('../middleware/auth');
-const unique = require('../middleware/unique');
 const config = require('config')
 const UserController = require('../controller/UserController')
 const LoginController = require('../controller/Login')
